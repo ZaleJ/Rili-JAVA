@@ -23,12 +23,6 @@ public class PrintCalendarDemo1 {
             isRn=false;
         }
 
-        if (isRn){
-            System.out.println("is");
-        }else{
-            System.out.println("is not");
-        }
-
         for(int i=1900; i<year; i++){
             if(i%400==0||(i%4==0&&i%100!=0)){
                 totalDays+=366;
@@ -72,6 +66,23 @@ public class PrintCalendarDemo1 {
         }
 
         // figure out what day is it this day.
-        
+        int beforeDays;
+        beforeDays=1+totalDays%7;
+        if (beforeDays==7){
+            beforeDays=0; // Sunday. 0 \t
+        }
+        System.out.println("Sunday\tMonday\tTuesday\tWednesday\tThursday\tFriday\tSaturday");
+        //print \t first
+        for (int i=0; i<beforeDays;i++){
+            System.out.print("\t");
+        }
+
+        for (int i=1; i<=days;++i){
+            System.out.print(i+"\t");
+            // enter if filled 7
+            if((i+beforeDays)%7==0){
+                System.out.println();
+            }
+        }
     }
 }
